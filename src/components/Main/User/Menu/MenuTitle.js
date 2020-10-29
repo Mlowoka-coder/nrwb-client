@@ -17,7 +17,8 @@ const MenuFunc = ({items,anchorE1,onClose}) => {
                         to={`${item.to}`}
                         style={{
                             textDecoration:'none'
-                        }}>
+                        }}
+                        key={id}>
                     <MenuItem 
                     onClick={onClose} 
                     key={id}>

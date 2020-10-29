@@ -30,7 +30,6 @@ const ReportTask = () => {
                             <Grid
                             item
                             sm={4}>
-                                <Form>
                                                     <Grid
                                                     container
                                                     direction='row'>
@@ -59,8 +58,6 @@ const ReportTask = () => {
                                                             <Button title='Submit' onClick={submitForm} />
                                                         </Grid>
                                                     </Grid>
-                                                    
-                                                </Form>
                             </Grid>
                         </Grid>
                     </Form>
