@@ -4,6 +4,7 @@ import Select from '../../../Inputs/Select';
 import Grid from '@material-ui/core/Grid';
 import Heading from '../../Heading';
 import Home from '@material-ui/icons/HomeOutlined';
+import Label from '@material-ui/core/InputLabel'
 import Typography from '@material-ui/core/Typography';
 
 const ThirdStep = () => {
@@ -20,7 +21,7 @@ const ThirdStep = () => {
             <Grid
                     container
                     direction='row'>
-                        <Grid
+                        <Grid 
                         item
                         sm={5}>
                             <Input 
@@ -97,11 +98,24 @@ const ThirdStep = () => {
                         <Grid
                         item
                         sm={5}>
-                            <Input 
-                            name='idEx'
-                            type='text'
-                            label='ID Expiry Date'/>                            
-                        </Grid>
+                            <Grid
+                        container
+                        direction='row'>
+                            <Grid
+                            item
+                            sm={5}
+                            style={{paddingTop:'27px'}}>
+                                <Label>ID Expiry</Label>
+                            </Grid>
+                            <Grid
+                            item
+                            sm={6}>
+                                <Input 
+                                name='idEx'
+                                type='date'
+                                label=' '/>
+                            </Grid>
+                        </Grid>                        </Grid>
                     </Grid>
     </React.Fragment>
     );

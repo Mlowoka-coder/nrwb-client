@@ -1,10 +1,11 @@
-import React from 'react';
-import Input from '../../../Inputs/Input';
-import Select from '../../../Inputs/Select';
-import Grid from '@material-ui/core/Grid';
-import Heading from '../../Heading';
-import Person from '@material-ui/icons/PersonOutlineOutlined';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import Input from '../../../Inputs/Input'
+import Select from '../../../Inputs/Select'
+import Grid from '@material-ui/core/Grid'
+import Heading from '../../Heading'
+import Person from '@material-ui/icons/PersonOutlineOutlined'
+import Typography from '@material-ui/core/Typography'
+import Label from '@material-ui/core/InputLabel'
 
 const FirstStep = () => {
     return (
@@ -52,10 +53,27 @@ const FirstStep = () => {
                     <Grid
                     item
                     sm={5}>
-                        <Input 
-                        name='dob'
-                        type='text'
-                        label='Date Of Birth'/>
+                        <Grid
+                        container
+                        direction='row'>
+                            <Grid
+                            item
+                            sm={3}
+                            style={{paddingTop:'27px'}}>
+                                <Label>DOB</Label>
+                            </Grid>
+                            <Grid
+                            item
+                            sm={9}>
+                                <Input 
+                                name='dob'
+                                type='date'
+                                label=' '
+                                style={{width:'120%'}}/>
+                            </Grid>
+                        </Grid>
+                        
+                        
                     </Grid>
                 </Grid><Grid
                 container

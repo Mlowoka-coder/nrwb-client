@@ -18,7 +18,7 @@ const SelectFunc = ({name, label, items}) => {
                 name={name}
                 >
                     {items.map((item,id)=>{
-                        return <MenuItem value={item.value}>{item.label}</MenuItem>
+                        return <MenuItem value={item.value} key={id}>{item.label}</MenuItem>
                     })}
                 </Field>
                 <div

@@ -22,7 +22,8 @@ const RadioFunc = ({name, isSubmitting, items}) => {
                     variant='caption'>
                         {item.label}
                     </Typography>}
-                    disabled={isSubmitting}/>))
+                    disabled={isSubmitting}
+                    key={id}/>))
                 }
             </Field>
         </React.Fragment>

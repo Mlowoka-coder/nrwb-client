@@ -15,8 +15,11 @@ import PersonalDetails from './SignUpPages/PersonalDetails'
 import LocationDetails from './SignUpPages/LocationDetails'
 import NationalityDetails from './SignUpPages/NationalityDetails'
 import PasswordSetup from './SignUpPages/PasswordSetup'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {logIn} from '../../../../redux/User/UserActions'
 
-const SignUpRender = ({changeView,onClose}) => {
+const SignUpRender = ({changeView,onClose,logIn}) => {
     let [index, changeIndex] = React.useState(0);
     const closeSignUp=()=>{
         onClose();
@@ -32,8 +35,6 @@ const SignUpRender = ({changeView,onClose}) => {
                 idNo:'',idEx:'',password1:'',password2:'',
             }}
             validationSchema={Yup.object({
-                home:Yup.string()
-                .required('Required*'),
                 firstname:Yup.string()
                 .required('Required*')
                 .max(15,'Must be 15 letters less*')
@@ -42,40 +43,54 @@ const SignUpRender = ({changeView,onClose}) => {
                 .required('Required*')
                 .max(15,'Must be 15 letters less*')
                 .matches(/^[a-z]+$/i,'Must be letters only*'),
+                initial:Yup.string()
+                .max(15,'Must be 15 letters less*'),
                 dob:Yup.string()
                 .required('Required*'),
                 gender:Yup.string()
                 .required('Required*'),
                 status:Yup.string()
                 .required('Required*'),
-                initial:Yup.string()
-                .max(15,'Must be 15 letters less*')
-                .matches(/^[a-z]+$/i,'Must be letters only*'),
                 phone:Yup.number()
                 .required('Required*')
                 .integer('Must be an Integer*'),
                 email:Yup.string()                
                 .email('Invalid Email Format'),
-                location:Yup.string()
+                district:Yup.string()
                 .required('Required*'),
                 area:Yup.string()
-                .required('Required*'),                 
+                .required('Required*'),
+                home:Yup.string()
+                .required('Required*'),               
                 idNo:Yup.string().length(8,'Must be  8 Characters*').required('Required*'),
-                idEx:Yup.string().max(15,'Must be 15 letters less').required('Required*'),
+                idEx:Yup.string().required('Required*'),
                 password1:Yup.string()
                 .max(16,'Cannot Exceed 16 Characters')
                 .required('Required*'),
                 password2:Yup.string()
                 .max(16,'Cannot Exceed 16 Characters')
-                .required('Required*'),               
+                .required('Required*')
+                .oneOf([Yup.ref('password1'),null],'Passwords Do Not Match')          
             })
-
             }
+
             onSubmit={(values,{setSubmitting})=>{
-                setTimeout(()=>{
-                    setSubmitting();
-                    alert(JSON.stringify(values,null,2))
-                },500)
+                axios.post('/signUp',values)
+                .then((res)=>{
+                    setSubmitting(false)
+                    onClose();
+
+                    const data={
+                        customerID : res[0],
+                        position : res[1],
+                        employeeID : res[2]
+                    }
+    
+                    logIn(data)
+                })
+                .catch((err)=>{
+                    console.log(err.response)
+                })
             }}>
                 {({submitForm, isSubmitting})=>(
                     <Form>
@@ -138,7 +153,15 @@ const Determine = ({index})=>{
             return <PasswordSetup/>
         default:
             return 'No Such Step'
+    } 
+}
+
+
+
+const mapDispatchToProps =(dispatch)=>{
+    return{
+        logIn:(data)=>dispatch(logIn(data))
     }
 }
 
-export default SignUpRender; 
+export default connect(null,mapDispatchToProps)(SignUpRender);

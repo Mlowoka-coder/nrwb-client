@@ -9,7 +9,7 @@ const SecondStep = () => {
     return (
         <React.Fragment>
          <Heading title='Location Details'>
-                
+                 
                 <Location fontSize='small'/>
             </Heading>
             <Typography

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import {Formik, Form} from 'formik';
 import RadioGroup from '../../Inputs/Radio';
 import Input from '../../Inputs/Input';
-import Map from './Map';
+// import Map from './Map';
 
 const ConnectionApplication = () => {
     const items=[
@@ -72,7 +72,11 @@ const ConnectionApplication = () => {
                             <Grid
                             item
                             sm={7}>
-                                <Map/>
+                                {/* <div
+                                style={{height:'100px',width:'100px'}}>
+                                    <Map/> 
+                                </div>
+                                */}
                             </Grid>
                         </Grid>
                     </Form>
