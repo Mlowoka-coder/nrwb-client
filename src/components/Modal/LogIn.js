@@ -34,16 +34,22 @@ const LogInRender = ({changeView,onClose,logIn}) => {
         onSubmit={(values,{setSubmitting})=>{
             axios.post('/logIn',values)
             .then((res)=>{
-                setSubmitting(false)
-                onClose()
+                if(typeof(res.data) === 'string' && res !== null){
+                    setSubmitting(false)
+                    console.log('Error',res)
+                }else{
+                    setSubmitting(false)
+                    onClose()
 
-                const data={
-                    customerID : res[0],
-                    position : res[1],
-                    employeeID : res[2]
-                }
-
-                logIn(data)
+                    const data = {
+                        accID : res.data.accID,
+                        customerID : res.data.customerID,
+                        position : res.data.position,
+                        employeeID : res.data.employeeID
+                    }
+                    console.log('Recieved data: ',res)
+                    logIn(data)
+                }                
             })
             .catch((err)=>{
                 console.log(err)

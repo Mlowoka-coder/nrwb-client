@@ -6,7 +6,8 @@ export const logIn = (details)=>{
         customer:(details.customerID)?true:false,
         employee:(details.employeeID)?details.position:null,
         customerID:details.customerID,
-        employeeID:details.employeeID
+        employeeID:details.employeeID,
+        accID:details.accID
     }
 }
 

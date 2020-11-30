@@ -16,7 +16,7 @@ const RegisterCrime = ({personnel}) => {
                        <Formik
                        initialValues={{
                            id:'',
-                           task:''
+                           crime:''
                        }}
                        validationSchema={Yup.object({
                         id:Yup.string()
@@ -66,7 +66,7 @@ const RegisterCrime = ({personnel}) => {
                        <Formik
                        initialValues={{
                            id:'',
-                           task:''
+                           crime:''
                        }}
                        validationSchema={Yup.object({
                         id:Yup.string()

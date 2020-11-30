@@ -1,6 +1,5 @@
-import React from 'react';
+import React , {useState} from 'react';
 import Header from './components/Header/Header';
-// import Footer from './components/Footer/Footer';
 import Visitor from './components/Main/Visitor';
 import User from './components/Main/User/User/User';
 import {connect} from 'react-redux';
@@ -13,7 +12,7 @@ const App = ({loggedIn}) => {
       {/* <Footer/> */}
     </React.Fragment>
   );
-};
+}
 
 const mapStateToProps=(state)=>{
   return{
